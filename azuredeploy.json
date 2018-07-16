@@ -29,7 +29,7 @@
     }
   },
   "variables": {
-    "functionAppName": "[concat(parameters('functionNameShort'), substring(uniqueString(resourceGroup().id),0,6))]",
+    "functionAppName": "[concat(parameters('functionNameShort'), '-', substring(uniqueString(resourceGroup().id),0,6))]",
     "hostingPlanName": "[parameters('appName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
