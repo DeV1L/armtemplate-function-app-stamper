@@ -8,16 +8,28 @@
         "description": "The name of the function app that you wish to create."
       }
     },
+    "functionNameShort": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the function app that you wish to create."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "hostingPlanName": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
     }
   },
   "variables": {
-    "functionAppName": "[concat(parameters('appName'), substring(uniqueString(resourceGroup().id),0,6))]",
+    "functionAppName": "[concat(parameters('functionNameShort'), substring(uniqueString(resourceGroup().id),0,6))]",
     "hostingPlanName": "[parameters('appName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
