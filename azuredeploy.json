@@ -41,10 +41,6 @@
       "name": "[variables('functionAppName')]",
       "location": "[parameters('location')]",
       "kind": "functionapp",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
-      ],
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "siteConfig": {
