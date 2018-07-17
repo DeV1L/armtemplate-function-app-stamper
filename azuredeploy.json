@@ -37,7 +37,8 @@
   },
   "variables": {
     "prefixBase64": "[base64(parameters('randomstring'))]",
-    "functionAppName": "[concat(parameters('appName'), '-', variables('prefixBase64'))]",
+    "functionAppName": "[parameters('appName')]",
+    "functionAppShareName": "[concat(parameters('appName'), '-', variables('prefixBase64'))]",
     "hostingPlanName": "[parameters('hostingPlanName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
@@ -69,7 +70,7 @@
             },
             {
               "name": "WEBSITE_CONTENTSHARE",
-              "value": "[toLower(variables('functionAppName'))]"
+              "value": "[toLower(variables('functionAppShareName'))]"
             },
             {
               "name": "FUNCTIONS_EXTENSION_VERSION",
