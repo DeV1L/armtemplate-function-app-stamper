@@ -37,7 +37,7 @@
   },
   "variables": {
     "prefixBase64": "[base64(parameters('randomstring'))]",
-    "functionAppName": "[concat(parameters('functionName'), '-', variables('prefixBase64'))]",
+    "functionAppName": "[concat(parameters('appName'), '-', variables('prefixBase64'))]",
     "hostingPlanName": "[parameters('hostingPlanName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
