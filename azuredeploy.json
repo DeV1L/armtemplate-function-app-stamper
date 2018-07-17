@@ -38,7 +38,7 @@
   "variables": {
     "prefixBase64": "[base64(parameters('randomstring'))]",
     "functionAppName": "[concat(parameters('functionName'), '-', variables('prefixBase64'))]",
-    "hostingPlanName": "[parameters('appName')]",
+    "hostingPlanName": "[parameters('hostingPlanName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "runtimeVersion": "[parameters('runtimeVersion')]"
