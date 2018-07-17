@@ -27,7 +27,7 @@
     "storageAccountName": {
       "type": "string"
     },
-    "prefix": {
+    "randomstring": {
       "type": "string"
     },
     "runtimeVersion": {
@@ -35,11 +35,13 @@
     }
   },
   "variables": {
-    "functionAppName": "[concat(parameters('functionName'), '-', parameters('prefix'))]",
+    "prefixBase64": "[base64(parameters('randomstring'))]",
+    "functionAppName": "[concat(parameters('functionName'), '-', variables('prefixBase64'))]",
     "hostingPlanName": "[parameters('appName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "runtimeVersion": "[parameters('runtimeVersion')]"
+
   },
   "resources": [
     {
