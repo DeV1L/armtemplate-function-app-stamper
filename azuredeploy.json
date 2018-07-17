@@ -26,13 +26,20 @@
     },
     "storageAccountName": {
       "type": "string"
+    },
+    "prefix": {
+      "type": "string"
+    },
+    "runtimeVersion": {
+      "type": "string"
     }
   },
   "variables": {
-    "functionAppName": "[concat(parameters('functionNameShort'), '-', substring(uniqueString(resourceGroup().id),0,6))]",
+    "functionAppName": "[concat(parameters('functionNameShort'), '-', parameters('prefix'))]",
     "hostingPlanName": "[parameters('appName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
-    "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+    "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "runtimeVersion": "[parameters('runtimeVersion')]"
   },
   "resources": [
     {
@@ -63,7 +70,7 @@
             },
             {
               "name": "FUNCTIONS_EXTENSION_VERSION",
-              "value": "beta"
+              "value": "[toLower(variables('runtimeVersion'))]"
             },
             {
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
