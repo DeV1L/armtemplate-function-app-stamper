@@ -31,7 +31,8 @@
       "type": "string"
     },
     "runtimeVersion": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "~1"
     }
   },
   "variables": {
