@@ -1,5 +1,8 @@
-$RG = $env:RGname
-$WebAppName = $env:appName
+param (
+    [string]$RG,
+    [string]$WebAppName
+      )
+
 $Function = Get-AzureRmWebApp -ResourceGroupName $RG -Name $WebAppName -ErrorAction SilentlyContinue
 
 if ($Function -eq $null)
